@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Match Card with Emoji🧠</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  </style>
+</head>
+<body>
+  <h2>Match Card with Emoji!</h2> <!-- Game title -->
+  <p>🟢 Drag the word onto the emoji (or vice versa)</p> <!-- Instructions for user -->
+  
+  <label for="category">Choose a category:</label>
+    <select id="category">
+    <option value="combo1">Combo 1</option>
+    <option value="animals">Animals</option>
+    <option value="household">Household</option>
+    <option value="transport">Transport</option>
+    <option value="legeplads">Legeplads</option>
+    <option value="frugtgrønt">Frugtgrønt</option>
+    <option value="spisetid">Spisetid</option>
+    <option value="furniture">Furniture</option>
+    <option value="fartøjer">Fartøjer</option>
+    <option value="skoletilbehører">Skoletilbehører</option>
+    <option value="colors">Colors</option>
+    <option value="countries">Countries</option>
+    <option value="capitals">Capitals</option>
+
+    
+    </select>
+    <button onclick="loadCategory()">Start Game</button>
+
+  <div class="board page" id="page1"> <!-- Container for all cards -->
+    <!-- Word Cards -->
+    <!-- Text cards: draggable elements with data-match keys -->
+    <!--🔁 Same logic is repeated for “Tomater” and “Vand”.
+      🔑 data-match="..." is how the word is linked to its emoji match.-->
+    <div class="card" draggable="true" data-match="bananer" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">Bananer</div>
+    <div class="card" draggable="true" data-match="tomater" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">Tomater</div>
+    <div class="card" draggable="true" data-match="vand" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">Vand</div>
+    <div class="card" draggable="true" data-match="æble" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">Æble</div>
+    <div class="card" draggable="true" data-match="hund" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">Hund</div>
+    <div class="card" draggable="true" data-match="kat" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">Kat</div>
+    <div class="card" draggable="true" data-match="bil" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">Bil</div>
+    <div class="card" draggable="true" data-match="sol" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">Sol</div>
+    <!-- Emoji Cards -->
+    <!-- Emoji Cards (now draggable too!) -->
+    <!-- Emoji: Also draggable and can receive drops -->
+    <!-- 🔁 Same for 🍌 = bananer, 🍅 = tomater.-->
+    <div class="card" draggable="true" data-match="vand" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">💧</div>
+    <div class="card" draggable="true" data-match="bananer" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">🍌</div>
+    <div class="card" draggable="true" data-match="tomater" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">🍅</div>
+    <div class="card" draggable="true" data-match="æble" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">🍎</div>
+    <div class="card" draggable="true" data-match="hund" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">🐶</div>
+    <div class="card" draggable="true" data-match="kat" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">🐱</div>
+    <div class="card" draggable="true" data-match="bil" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">🚗</div>
+    <div class="card" draggable="true" data-match="sol" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">☀️</div>
+  </div>
+  <!-- Page 2 -->
+  <div class="board page" id="page2" style="display:none">
+    <div class="card" draggable="true" data-match="bil" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">Bil</div>
+    <div class="card" draggable="true" data-match="sol" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">Sol</div>
+    <!-- Extra cards to send in the next next,  because this one is filled up with 16 card-->
+    <div class="card" draggable="true" data-match="bil" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">🚗</div>
+    <div class="card" draggable="true" data-match="sol" ondragstart="startDrag(event)" ondragover="allowDrop(event)"
+      ondrop="handleDrop(event)">☀️</div>
+  </div>
+  <!-- pagination -->
+  <div class="grid-container">
+    <div class="board page" id="page1"></div>
+    <div class="board page" id="page2" style="display:none"> ...second 16 cards... </div>
+  </div>
+  <div class="pagination">
+    <button onclick="showPage(currentPage - 1)">⬅️</button>
+    <span id="pageIndicator">Page 1</span>
+    <button onclick="showPage(currentPage + 1)">➡️</button>
+  </div>
+  <script src="script.js">
+  </script>
+</body>
+</html>
