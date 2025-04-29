@@ -1,3 +1,5 @@
+
+/*-------------------------------Desktop -------------------------*/
 body {
     font-family: sans-serif;
     background: #f4f4f4;
@@ -27,7 +29,7 @@ body {
     justify-content: center;
     cursor: grab;
     transition: transform 0.2s;
-    font-size: 5vw;      /* Font scales with screen */
+    
   }
   .card.text {
     font-size: 20px;  /* slightly smaller for words */
@@ -52,12 +54,19 @@ body {
     height: auto;
     max-height: 70px;
     object-fit: contain;
-    pointer-events: none;
+    /* pointer-events: none; */
   }
+  body, .card {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+  }
+  
 
-
-  /*----------------------------------*/
+  /*----------For mobil device---------*/
   @media only screen and (max-width: 600px) {
+    /* mobile size rules */
       .card{
         width: 60px;
         height: 60px;
@@ -72,6 +81,10 @@ body {
         transition: transform 0.2s;
         font-size: 5vw;
       }
+      .card {
+        touch-action: none;
+      }
+      
       .card.emoji {
         font-size: 40px;
       }
