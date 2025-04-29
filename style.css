@@ -19,7 +19,6 @@ body {
   .card {
     width: 100px;
     height: 100px;
-    font-size: 24px;
     border-radius: 10px;
     border: 2px solid #999;
     background: white;
@@ -28,6 +27,7 @@ body {
     justify-content: center;
     cursor: grab;
     transition: transform 0.2s;
+    font-size: 5vw;      /* Font scales with screen */
   }
   .card.text {
     font-size: 20px;  /* slightly smaller for words */
@@ -54,4 +54,3 @@ body {
     object-fit: contain;
     pointer-events: none;
   }
-  
