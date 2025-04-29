@@ -137,3 +137,11 @@ function showPage(pageNumber) {
     indicator.textContent = `Page ${currentPage} of ${totalPages}`;
     }
 }
+
+// Prevent browser from scrolling or refreshing while dragging
+document.addEventListener('touchmove', function (e) {
+    if (e.target.closest('.card')) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+  
