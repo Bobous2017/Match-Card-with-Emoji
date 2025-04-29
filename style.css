@@ -114,5 +114,13 @@ body {
     button{
       margin: 15px 0px 10px 0px;
     }
+    .matched {
+      background: #c8f7c5;
+      border-color: #2ecc71;
+    }
+    .wrong {
+      background: #fdd;
+      border-color: #e74c3c;
+    }
 
   }
