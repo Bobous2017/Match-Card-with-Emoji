@@ -54,3 +54,51 @@ body {
     object-fit: contain;
     pointer-events: none;
   }
+
+
+  /*----------------------------------*/
+  @media only screen and (max-width: 600px) {
+      .card{
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+        border: 2px solid #999;
+        background: white;
+        display: flex
+      ;
+        align-items: center;
+        justify-content: center;
+        cursor: grab;
+        transition: transform 0.2s;
+        font-size: 5vw;
+      }
+      .card.emoji {
+        font-size: 40px;
+      }
+
+      .board {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 10px auto;
+        max-width: 500px;
+    }
+
+    .card img {
+      width: 50px !important;
+      height: auto;
+      max-height: 40px;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    .card.text {
+      font-size: 13px;  /* slightly smaller for words */
+      font-weight: 500;
+    }
+    button{
+      margin: 15px 0px 10px 0px;
+    }
+
+  }
