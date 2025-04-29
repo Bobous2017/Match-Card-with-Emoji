@@ -63,6 +63,8 @@ async function loadCategory() {
     );
     // Step 4: Avoid text and emoji end up side-by-side—making the game a bit too easy.
     pages.forEach(page => page.sort(() => Math.random() - 0.5));
+
+
     // Step 5: Render pages to DOM
     function renderPage(cards, containerId) {
         const board = document.getElementById(containerId);
@@ -80,12 +82,40 @@ async function loadCategory() {
             div.textContent = card.content;
         }
         
-      
-      
-            
         div.ondragstart = startDrag;
         div.ondragover = allowDrop;
         div.ondrop = handleDrop;
+
+        //----------------------------------------Touch FOr Mobile ------------------
+        div.addEventListener('touchstart', e => {
+            touchStartCard = e.currentTarget;
+        });
+        
+        div.addEventListener('touchend', e => {
+            const touch = e.changedTouches[0];
+            const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+            const targetCard = elem?.closest('.card');
+        
+            if (!touchStartCard || !targetCard || touchStartCard === targetCard) return;
+        
+            const from = touchStartCard.dataset.match;
+            const to = targetCard.dataset.match;
+        
+            if (from === to) {
+                console.log("✅ Matched (Touch)!");
+                touchStartCard.classList.add("matched");
+                targetCard.classList.add("matched");
+                touchStartCard.setAttribute("draggable", false);
+                targetCard.setAttribute("draggable", false);
+            } else {
+                console.log("❌ Wrong Match (Touch)");
+                targetCard.classList.add("wrong");
+                setTimeout(() => targetCard.classList.remove("wrong"), 800);
+            }
+        
+            touchStartCard = null;
+        });
+        
         board.appendChild(div);
         });
     }
